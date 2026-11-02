@@ -1,1 +1,75 @@
-/.idea
+
+# ==============================
+# Maven
+# ==============================
+**/target/
+.mvn/wrapper/maven-wrapper.jar
+
+# ==============================
+# Java
+# ==============================
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+
+# ==============================
+# IntelliJ IDEA
+# ==============================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ==============================
+# Eclipse
+# ==============================
+.classpath
+.project
+.settings/
+
+# ==============================
+# VS Code
+# ==============================
+.vscode/
+
+# ==============================
+# Operating System
+# ==============================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==============================
+# Logs
+# ==============================
+*.log
+logs/
+
+# ==============================
+# Environment variables and secrets
+# ==============================
+.env
+.env.*
+!.env.example
+
+application-local.properties
+application-local.yml
+application-secret.properties
+application-secret.yml
+
+# ==============================
+# Temporary files
+# ==============================
+*.tmp
+*.swp
+*.bak
+*.orig
+
+# ==============================
+# Docker local overrides
+# ==============================
+docker-compose.override.yml
