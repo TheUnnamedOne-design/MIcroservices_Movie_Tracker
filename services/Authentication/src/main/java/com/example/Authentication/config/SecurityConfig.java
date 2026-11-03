@@ -40,12 +40,17 @@ public class SecurityConfig {
             AuthenticationProvider authenticationProvider) throws Exception
     {
         httpSecurity.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(
-                        auth -> auth.requestMatchers(
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
                                 HttpMethod.POST,
                                 "/auth/register",
                                 "/auth/login"
-                        ).permitAll().anyRequest().authenticated()
+                        ).permitAll()
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/auth/health"
+                        ).permitAll()
+                        .anyRequest().authenticated()
                 ).sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 ).authenticationProvider(authenticationProvider)

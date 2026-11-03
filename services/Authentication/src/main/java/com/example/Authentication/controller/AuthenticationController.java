@@ -31,6 +31,13 @@ public class AuthenticationController {
         this.jwtService = jwtService;
     }
 
+
+    @GetMapping("/health")
+    public ResponseEntity<String> health()
+    {
+        return ResponseEntity.status(HttpStatus.OK).body("Authentication Service is running!");
+    }
+
     @PostMapping("/register")
     public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest registerRequest)
     {
