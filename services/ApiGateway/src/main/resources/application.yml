@@ -1,0 +1,33 @@
+
+spring:
+  application:
+    name: ApiGateway
+
+  # Import local environment variables
+  config:
+    import: "optional:file:.env[.properties]"
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: authentication-service
+              uri: https://localhost:8081
+              predicates:
+                - Path=/auth/**
+
+server:
+  port: 8082
+
+  # HTTPS configuration
+  ssl:
+    enabled: true
+    key-store: file:./keystore/localhost.p12
+    key-store-type: PKCS12
+    key-store-password: ${TLS_KEYSTORE_PASSWORD}
+    key-alias: localhost
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
