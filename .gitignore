@@ -60,6 +60,7 @@ application-local.properties
 application-local.yml
 application-secret.properties
 application-secret.yml
+**/keystore/
 
 # ==============================
 # Temporary files
@@ -73,3 +74,5 @@ application-secret.yml
 # Docker local overrides
 # ==============================
 docker-compose.override.yml
+
+
