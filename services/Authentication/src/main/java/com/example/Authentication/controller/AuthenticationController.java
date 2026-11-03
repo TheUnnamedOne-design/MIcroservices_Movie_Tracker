@@ -6,6 +6,7 @@ import com.example.Authentication.dto.RegisterRequest;
 import com.example.Authentication.service.AuthenticationService;
 import com.example.Authentication.service.JWTService;
 import com.example.Authentication.service.RegistrationService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -31,7 +32,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest)
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest registerRequest)
     {
         registrationService.register(registerRequest.getEmail(),registerRequest.getPassword());
 
@@ -40,7 +41,7 @@ public class AuthenticationController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest)
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest)
     {
         Authentication authentication = authenticationService.authenticate(
                 loginRequest.getEmail(),
