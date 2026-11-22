@@ -1,5 +1,6 @@
 package com.example.Authentication.service;
 
+import com.example.Authentication.security.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
@@ -51,8 +52,12 @@ public class JWTService {
     public String generateToken(UserDetails userDetails)
     {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims,userDetails.getUsername());
+        if (userDetails instanceof CustomUserDetails customUserDetails) {
+            claims.put("userId", customUserDetails.getId());
+        }
+        return createToken(claims, userDetails.getUsername());
     }
+
 
 
     public String extractUsername(String token){
